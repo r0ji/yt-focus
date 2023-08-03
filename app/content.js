@@ -62,7 +62,7 @@ chrome.storage.local.get('isEnabled', function(data) {
           setTimeout(function() {
             unhideElements();
             uncenterSearchBar();
-          }, 1000);
+          }, 1500);
         }
       });
 
@@ -74,9 +74,14 @@ chrome.storage.local.get('isEnabled', function(data) {
         setTimeout(function() {
           unhideElements();
           uncenterSearchBar();
-        }, 1000);
+        }, 1500);
       });
     }
 
+  } else {
+
+    unhideElements();
+    uncenterSearchBar();
+
   }
-});
+}); 
