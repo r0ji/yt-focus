@@ -26,7 +26,8 @@
     {
       "matches": ["https://www.youtube.com/*"],
       "js": ["app/content.js"],
-      "css": ["app/hide-elements.css"]
+      "css": ["app/hide-elements.css"],
+      "css": ["app/hide-images.css"]
     }
   ]
 }
