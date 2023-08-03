@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 10px;
+}
+
+#icon {
+    width: 48px;
+    height: 48px;
+}
+
+#reload-message {
+    color: red;
+    display: none;
+}
