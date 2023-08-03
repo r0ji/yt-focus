@@ -1,0 +1,19 @@
+.hide-element {
+  display: none !important;
+}
+
+.center-search-bar {
+  position: absolute !important;
+  top: 50vh !important;
+  left: 50vw !important;
+  transform: translate(-50%, -50%) !important;
+  width: 55rem !important;
+}
+
+.uncenter-search-bar {
+  position: initial !important;
+  top: initial !important;
+  left: initial !important;
+  transform: initial !important;
+  width: initial !important;
+}

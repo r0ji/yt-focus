@@ -8,16 +8,16 @@
     "https://www.youtube.com/*"
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "app/background.js"
   },
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup/popup.html"
   },
   "icons": {
-    "16": "icon16.png",
-    "32": "icon32.png",
-    "64": "icon64.png",
-    "128": "icon128.png"
+    "16": "icon/icon16.png",
+    "32": "icon/icon32.png",
+    "64": "icon/icon64.png",
+    "128": "icon/icon128.png"
   },
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
@@ -25,7 +25,8 @@
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
-      "js": ["content.js"]
+      "js": ["app/content.js"],
+      "css": ["app/hide-elements.css"]
     }
   ]
 }

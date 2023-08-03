@@ -7,20 +7,22 @@ var elementsToHide = [
   'tp-yt-app-drawer'
 ];
 
-function hideElements() {
-  elementsToHide.forEach(function(selector) {
-    var element = document.querySelector(selector);
-    if (element) element.style.display = 'none';
-  });
-  centerSearchBar();
-}
+var elementsToUnhideCSS = `
+  div#start,
+  div#end,
+  div#voice-search-button,
+  ytd-mini-guide-renderer,
+  ytd-page-manager,
+  tp-yt-app-drawer {
+    visibility: visible !important;
+  }
+`;
+
 
 function unhideElements() {
-  elementsToHide.forEach(function(selector) {
-    var element = document.querySelector(selector);
-    if (element) element.style.display = '';
-  });
-  uncenterSearchBar();
+  var styleSheet = document.createElement('style');
+  styleSheet.textContent = elementsToUnhideCSS;
+  document.head.appendChild(styleSheet);
 }
 
 function centerSearchBar() {
@@ -47,22 +49,34 @@ function uncenterSearchBar() {
 
 chrome.storage.local.get('isEnabled', function(data) {
   if (data.isEnabled !== false) {
-    hideElements();
+
+    centerSearchBar();
 
     var searchInput = document.querySelector('input#search');
     if (searchInput) {
-      searchInput.focus(); // This line sets the focus to the input element
+
+      searchInput.focus();
 
       searchInput.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
-          // Introduce a 1-second delay before calling unhideElements
           setTimeout(function() {
             unhideElements();
+            uncenterSearchBar();
           }, 1000);
         }
       });
+
     }
+
+    var searchIcon = document.getElementById('search-icon-legacy');
+    if (searchIcon) {
+      searchIcon.addEventListener('click', function() {
+        setTimeout(function() {
+          unhideElements();
+          uncenterSearchBar();
+        }, 1000);
+      });
+    }
+
   }
 });
-
-

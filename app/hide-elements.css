@@ -1,0 +1,8 @@
+div#start,
+div#end,
+div#voice-search-button,
+ytd-mini-guide-renderer,
+ytd-page-manager,
+tp-yt-app-drawer {
+  visibility: hidden !important;
+}
