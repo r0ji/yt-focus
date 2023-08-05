@@ -4,7 +4,8 @@ var elementsToHide = [
   'div#voice-search-button',
   'ytd-mini-guide-renderer',
   'ytd-page-manager',
-  'tp-yt-app-drawer'
+  'tp-yt-app-drawer',
+  'ytd-miniplayer'
 ];
 
 function hideElements() {
@@ -61,7 +62,7 @@ function restoreEverything() {
 function addRestoreLink() {
   var restoreLink = document.createElement('a');
   restoreLink.href = '#';
-  restoreLink.textContent = 'restore';
+  restoreLink.textContent = '[Esc] or click to restore';
   restoreLink.style.position = 'fixed';
   restoreLink.style.bottom = '10px';
   restoreLink.style.left = '50%'; // Set the left position to 50%
@@ -77,6 +78,12 @@ function addRestoreLink() {
     restoreEverything();
   });
 }
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    restoreEverything();
+  }
+});
 
 chrome.storage.local.get('isEnabled', function(data) {
   if (data.isEnabled !== false) {
