@@ -60,9 +60,9 @@ function restoreEverything() {
 }
 
 function addRestoreLink() {
-  var restoreLink = document.createElement('a');
-  restoreLink.href = '#';
-  restoreLink.textContent = '[Esc] or click to restore';
+  var restoreLink = document.createElement('p');
+  // restoreLink.href = '#';
+  restoreLink.textContent = '[Press Esc] or click anywhere to restore';
   restoreLink.style.position = 'fixed';
   restoreLink.style.bottom = '10px';
   restoreLink.style.left = '50%'; // Set the left position to 50%
@@ -72,17 +72,21 @@ function addRestoreLink() {
   restoreLink.id = 'restore-link';
   document.body.appendChild(restoreLink);
 
-  // Add click event listener to the 'Restore' link
-  restoreLink.addEventListener('click', function(e) {
-    e.preventDefault(); // Prevent default link behavior
-    restoreEverything();
-  });
+  // // Add click event listener to the 'Restore' link
+  // restoreLink.addEventListener('click', function(e) {
+  //   e.preventDefault(); // Prevent default link behavior
+  //   restoreEverything();
+  // });
 }
 
 document.addEventListener('keydown', function(event) {
   if (event.key === 'Escape') {
     restoreEverything();
   }
+});
+
+document.addEventListener('click', function(e) {
+  restoreEverything();
 });
 
 chrome.storage.local.get('isEnabled', function(data) {
